@@ -10,6 +10,30 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
+import nltk
+from nltk import Tree
+import matplotlib.pyplot as plt
+import streamlit as st
+import io
+import networkx as nx
+import os
+
+# Function to download NLTK data
+def download_nltk_data():
+    try:
+        # Ensure the required NLTK resources are downloaded
+        nltk.download('punkt', quiet=True)
+        nltk.download('averaged_perceptron_tagger', quiet=True)
+        nltk.download('maxent_ne_chunker', quiet=True)
+        nltk.download('words', quiet=True)
+        return True
+    except Exception as e:
+        st.error(f"Error downloading NLTK data: {e}")
+        return False
+
+# Call the download function at the start
+download_nltk_data()
+
 
 def build_parse_tree(sentence):
     """Builds a parse tree from the given sentence using NLTK's parsing functions."""
